@@ -2,6 +2,8 @@
 
 Express.jsを使用したシンプルなAPIサーバーです。Kubernetes環境でのデプロイに対応しています。
 
+https://hub.docker.com/r/kurosawakuro/api-nodejs-k8s
+
 ## 機能
 
 - ヘルスチェックエンドポイント (`/healthz`)
