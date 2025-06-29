@@ -1,0 +1,233 @@
+### VSCode REST Client Extension - API Test Suite
+### Base URL Configuration
+@baseUrl = http://localhost:8000
+@apiKey = not-set
+
+### 1. Root Endpoint Test
+GET {{baseUrl}}/
+Content-Type: application/json
+
+###
+
+### 2. Health Check Endpoint
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+### 3. Readiness Check Endpoint
+GET {{baseUrl}}/readyz
+Content-Type: application/json
+
+###
+
+### 4. Configuration Endpoint
+GET {{baseUrl}}/config
+Content-Type: application/json
+
+###
+
+### 5. Metrics Endpoint (Prometheus)
+GET {{baseUrl}}/metrics
+Content-Type: text/plain
+
+###
+
+### 6. Environment Variable Test - Custom Greeting
+# Test with custom APP_GREETING environment variable
+GET {{baseUrl}}/config
+Content-Type: application/json
+
+###
+
+### 7. Error Handling Test - Invalid Endpoint
+GET {{baseUrl}}/invalid-endpoint
+Content-Type: application/json
+
+###
+
+### 8. Response Headers Test
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+Accept: application/json
+
+###
+
+### 9. Performance Test - Multiple Requests
+# This demonstrates how to test multiple endpoints in sequence
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/readyz
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/config
+Content-Type: application/json
+
+###
+
+### 10. API Documentation Test
+# Test all endpoints to verify API documentation
+GET {{baseUrl}}/
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/readyz
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/config
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/metrics
+Content-Type: text/plain
+
+###
+
+### 11. Advanced Environment Variable Testing
+# Test with different environment configurations
+GET {{baseUrl}}/config
+Content-Type: application/json
+X-Test-Environment: development
+
+###
+
+### 12. Custom Headers Test
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+User-Agent: VSCode-REST-Client/1.0
+X-Request-ID: test-12345
+
+###
+
+### 13. Response Time Test
+# Test response time for performance monitoring
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+### 14. Content Type Validation Test
+GET {{baseUrl}}/config
+Accept: application/json
+Content-Type: application/json
+
+###
+
+### 15. CORS Test (if implemented)
+GET {{baseUrl}}/healthz
+Origin: http://localhost:8000
+Access-Control-Request-Method: GET
+
+###
+
+### 16. Load Testing Simulation
+# Multiple rapid requests to test server stability
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/readyz
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/config
+Content-Type: application/json
+
+###
+
+### 17. Error Scenarios Test
+# Test various error conditions
+GET {{baseUrl}}/nonexistent
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/healthz/invalid
+Content-Type: application/json
+
+###
+
+### 18. API Versioning Test (Future Enhancement)
+# Test for potential API versioning
+GET {{baseUrl}}/v1/healthz
+Content-Type: application/json
+
+###
+
+### 19. Authentication Test (Future Enhancement)
+# Test for potential authentication requirements
+GET {{baseUrl}}/config
+Content-Type: application/json
+Authorization: Bearer {{apiKey}}
+
+###
+
+### 20. Rate Limiting Test (Future Enhancement)
+# Test for potential rate limiting
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+### 21. Logging Verification Test
+# Test endpoints to verify logging functionality
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+X-Log-Level: debug
+
+###
+
+### 22. Metrics Collection Test
+# Test metrics endpoint for monitoring
+GET {{baseUrl}}/metrics
+Content-Type: text/plain
+Accept: text/plain
+
+###
+
+### 23. Health Check Deep Dive
+# Comprehensive health check testing
+GET {{baseUrl}}/healthz
+Content-Type: application/json
+
+###
+
+### 24. Readiness Check Deep Dive
+# Comprehensive readiness check testing
+GET {{baseUrl}}/readyz
+Content-Type: application/json
+
+###
+
+### 25. Configuration Deep Dive
+# Comprehensive configuration testing
+GET {{baseUrl}}/config
+Content-Type: application/json
+
+###

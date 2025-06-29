@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  api-server:
+    image: your-dockerhub-username/api-nodejs-k8s:latest
+    container_name: api-nodejs-k8s-server
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - APP_GREETING=Hello from Docker Compose!
+      - API_KEY=your-api-key-here
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - api-network
+    volumes:
+      - ./logs:/app/logs
+    labels:
+      - "com.example.description=API Node.js Server"
+      - "com.example.version=1.0.0"
+
+  # 開発用サービス（ローカルビルド）
+  api-server-dev:
+    image: api-nodejs-k8s:latest
+    container_name: api-nodejs-k8s-dev
+    ports:
+      - "8001:8000"
+    environment:
+      - PORT=8000
+      - APP_GREETING=Hello from Development!
+      - API_KEY=dev-api-key
+      - NODE_ENV=development
+    restart: unless-stopped
+    profiles:
+      - dev
+    networks:
+      - api-network
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+
+networks:
+  api-network:
+    driver: bridge
+    name: api-network
+
+volumes:
+  logs:
+    driver: local 
